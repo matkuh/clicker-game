@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Wrapper from './components/Wrapper'
+import Container from './components/Container'
 import Card from './components/Card'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
@@ -20,13 +20,13 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Container>
         <Nav />
         <Hero>Memory Clicker</Hero>
         <Card>
 
         </Card>
-      </Wrapper>
+      </Container>
     )
   }
 

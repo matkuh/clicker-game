@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Butters",
+        "image": "./images/ButtersStotch.png", 
+        "clicked": false
+    },
+    {
+        "id": 2,
+        "name": "Eric",
+        "image": "./images/Eric-cartman.png", 
+        "clicked": false
+    },
+    {
+        "id": 3,
+        "name": "Chef",
+        "image": "./images/JeromeChef.png", 
+        "clicked": false
+    },
+    {
+        "id": 4,
+        "name": "Kenny",
+        "image": "./images/KennyMcCormick.png", 
+        "clicked": false
+    },
+    {
+        "id": 5,
+        "name": "Mr. Mackey",
+        "image": "./images/MrMackey.png", 
+        "clicked": false
+    },
+    {
+        "id": 6,
+        "name": "PC Principal",
+        "image": "./images/PCprincipal.png", 
+        "clicked": false
+    },
+    {
+        "id": 7,
+        "name": "Princess Kenny",
+        "image": "./images/PrincessKenny.png", 
+        "clicked": false
+    },
+    {
+        "id": 8,
+        "name": "Professor Chaos",
+        "image": "./images/ProfessorChaos.png", 
+        "clicked": false
+    },
+    {
+        "id": 9,
+        "name": "Randy",
+        "image": "./images/RandyMarsh.png", 
+        "clicked": false
+    },
+    {
+        "id": 10,
+        "name": "Token",
+        "image": "./images/Token.png", 
+        "clicked": false
+    },
+    {
+        "id": 11,
+        "name": "Towelie",
+        "image": "./images/Towelie.png", 
+        "clicked": false
+    },
+    {
+        "id": 12,
+        "name": "Kyle",
+        "image": "./images/Kyle-broflovski", 
+        "clicked": false
+    }
+]
