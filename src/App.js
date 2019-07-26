@@ -3,30 +3,30 @@ import Container from './components/Container'
 import Card from './components/Card'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
+import Characters from './characters.json'
 import Footer from './components/Footer'
 import './App.css';
 
 
 class App extends Component {
   state = {
-    celebs
+
   }
 
-  shuffleCards = id => {
-    const celebs = this.state.celebs.map(celeb => celeb.id !== id);
-    this.setState({ celebs })
-  }
+
 
 
   render() {
     return (
-      <Container>
+      <div>
         <Nav />
         <Hero>Memory Clicker</Hero>
-        <Card>
-
-        </Card>
-      </Container>
+        <Container>
+          <Card>
+          </Card>
+        </Container>
+        <Footer />
+      </div>
     )
   }
 
