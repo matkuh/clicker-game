@@ -4,7 +4,9 @@ import "./style.css";
 function Footer() {
   return (
     <footer className="footer">
-      <span></span>
+      <nav className="navbar navbar-dark bg-dark">
+
+      </nav>
     </footer>
   );
 }

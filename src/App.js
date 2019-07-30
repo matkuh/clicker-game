@@ -14,17 +14,22 @@ class App extends Component {
   state = {
     score: 0,
     highScore: 0,
-    cards: characters
+    clicked: false,
+    cards: this.handleShuffleCards()
   }
 
   componentDidMount() {
     this.handleCreateCards()
   }
 
-  shuffleCards(array) {
-    array.sort(() => Math.random() - 0.5);
+  handleShuffleCards() {
+    const newCards = characters.slice()
+    const shuffleCards = [];
+    while (newCards.length > 0) {
+      shuffleCards.push(newCards.splice(Math.floor(Math.random() * newCards.length), 1)[0]);
+    }
+    return shuffleCards
   }
-
 
   handleCreateCards = () => {
     return this.state.cards.map((card) =>
@@ -32,7 +37,7 @@ class App extends Component {
         image={card.image}
         name={card.name}
         key={card.id}
-        onClick={this.shuffleCards(characters)}
+        onClick={this.handleShuffleCards()}
       />
     )
   }
@@ -44,7 +49,9 @@ class App extends Component {
         <Nav />
         <Hero>Memory Clicker</Hero>
         <Container>
-          {this.handleCreateCards()}
+          <div className="row">
+            {this.handleCreateCards()}
+          </div>
         </Container>
         <Footer />
       </div>
