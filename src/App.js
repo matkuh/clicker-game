@@ -15,7 +15,8 @@ class App extends Component {
     score: 0,
     highScore: 0,
     clicked: false,
-    cards: this.handleShuffleCards()
+    cards: this.handleShuffleCards(),
+    clickedCards: []
   }
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
     while (newCards.length > 0) {
       shuffleCards.push(newCards.splice(Math.floor(Math.random() * newCards.length), 1)[0]);
     }
-    return shuffleCards
+    return shuffleCards;
   }
 
   handleCreateCards = () => {
@@ -37,16 +38,43 @@ class App extends Component {
         image={card.image}
         name={card.name}
         key={card.id}
-        onClick={this.handleShuffleCards()}
+        id={card.id}
+        cardClick={this.handleClickedCards}
       />
     )
   }
 
+  handleClickedCards = (id) => {
+    if (this.state.clickedCards.includes(id)){
+      this.setState({
+        score: 0,
+        clickedCards: []
+      })
+      return
+    } else {
+      this.setState({
+        score: this.state.score +1,
+        clickedCards: this.state.clickedCards.push([id])
+      })
+      if(this.state.score + 1 === 12){
+        this.setState({
+          score: 0,
+          highScore: this.state.score + 1,
+          clickedCards: []
+        })
+      }
+      else if (this.state.score + 1 > this.state.highScore){
+        this.setState({
+          highScore: this.state.score + 1})
+      }
+
+    }
+  }
 
   render() {
     return (
       <div>
-        <Nav />
+        <Nav score={this.state.score} highScore={this.state.highScore}/>
         <Hero>Memory Clicker</Hero>
         <Container>
           <div className="row">

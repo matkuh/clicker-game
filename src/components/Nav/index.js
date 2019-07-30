@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { tsPropertySignature } from "@babel/types";
+
 
 function Nav(props) {
   return (
