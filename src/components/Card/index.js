@@ -1,11 +1,14 @@
 import React from 'react'
+import './style.css'
 
 function Card(props) {
     return (
-        <div className="card-panel">
+        <div className="row">
+        <div className="card-panel s3">
             <div className="img-container">
-                <img src={props.image}/>
+                <img alt={props.name} src={props.image}/>
             </div>
+        </div>
         </div>
     )
 }
