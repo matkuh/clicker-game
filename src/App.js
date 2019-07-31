@@ -14,62 +14,55 @@ class App extends Component {
   state = {
     score: 0,
     highScore: 0,
-    clicked: false,
-    cards: this.handleShuffleCards(),
-    clickedCards: []
+    // clicked: false,
+    characters,
   }
 
-  componentDidMount() {
-    this.handleCreateCards()
-  }
+  // componentDidMount() {
+  //   this.handleCreateCards()
+  // }
 
-  handleShuffleCards() {
-    const newCards = characters.slice()
-    const shuffleCards = [];
-    while (newCards.length > 0) {
-      shuffleCards.push(newCards.splice(Math.floor(Math.random() * newCards.length), 1)[0]);
-    }
-    return shuffleCards;
-  }
+  // handleShuffleCards() {
+  //   const newCards = characters.slice()
+  //   const shuffleCards = [];
+  //   while (newCards.length > 0) {
+  //     shuffleCards.push(newCards.splice(Math.floor(Math.random() * newCards.length), 1)[0]);
+  //   }
+  //   return shuffleCards;
+  // }
 
   handleCreateCards = () => {
-    return this.state.cards.map((card) =>
+    return this.state.characters.map((card) =>
       <Card
         image={card.image}
         name={card.name}
         key={card.id}
         id={card.id}
-        cardClick={this.handleClickedCards}
+        handleClickedCards={this.handleClickedCards}
       />
     )
   }
 
   handleClickedCards = (id) => {
-    if (this.state.clickedCards.includes(id)){
-      this.setState({
-        score: 0,
-        clickedCards: []
+   this.state.characters.find((ca, i)=>{
+     if (ca.id === id) {
+       if(characters[i].clicked === false){
+         characters[i].clicked = characters[i].clicked = true;
+         this.setState({score: this.state.score + 1})
+       }
+       this.state.characters.sort(() => Math.random() - 0.5)
+     } else if (this.state.score> this.state.highScore) {
+      this.setState({highScore: this.state.score})
+     }
+      this.state.characters.forEach(character => {
+        character.clicked = false;
       })
-      return
-    } else {
-      this.setState({
-        score: this.state.score +1,
-        clickedCards: this.state.clickedCards.push([id])
-      })
-      if(this.state.score + 1 === 12){
-        this.setState({
-          score: 0,
-          highScore: this.state.score + 1,
-          clickedCards: []
-        })
-      }
-      else if (this.state.score + 1 > this.state.highScore){
-        this.setState({
-          highScore: this.state.score + 1})
-      }
+      this.setState({score: 0})
+   })
+}
 
-    }
-  }
+  
+  
 
   render() {
     return (
