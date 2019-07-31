@@ -14,64 +14,62 @@ class App extends Component {
   state = {
     score: 0,
     highScore: 0,
-    // clicked: false,
+
     characters,
   }
 
-  // componentDidMount() {
-  //   this.handleCreateCards()
-  // }
-
-  // handleShuffleCards() {
-  //   const newCards = characters.slice()
-  //   const shuffleCards = [];
-  //   while (newCards.length > 0) {
-  //     shuffleCards.push(newCards.splice(Math.floor(Math.random() * newCards.length), 1)[0]);
-  //   }
-  //   return shuffleCards;
-  // }
-
-  handleCreateCards = () => {
-    return this.state.characters.map((card) =>
-      <Card
-        image={card.image}
-        name={card.name}
-        key={card.id}
-        id={card.id}
-        handleClickedCards={this.handleClickedCards}
-      />
-    )
-  }
 
   handleClickedCards = (id) => {
-   this.state.characters.find((ca, i)=>{
-     if (ca.id === id) {
-       if(characters[i].clicked === false){
-         characters[i].clicked = characters[i].clicked = true;
-         this.setState({score: this.state.score + 1})
-       }
-       this.state.characters.sort(() => Math.random() - 0.5)
-     } else if (this.state.score> this.state.highScore) {
-      this.setState({highScore: this.state.score})
-     }
-      this.state.characters.forEach(character => {
-        character.clicked = false;
-      })
-      this.setState({score: 0})
-   })
-}
+    this.state.characters.find((ca, i) => {
+      if (ca.id === id) {
+        if (characters[i].clicked === false) {
+          characters[i].clicked = characters[i].clicked = true;
+          this.setState({ score: this.state.score + 1 })
+          this.state.characters.sort(() => Math.random() - 0.5)
+          return true
+        } else {
+          this.handleResetGame()
 
-  
-  
+        }
+      }
+    })
+  }
+
+
+
+
+
+
+  handleResetGame = () => {
+    if (this.state.score > this.state.highScore) {
+      this.setState({ highScore: this.state.score })
+    }
+    this.state.characters.forEach(card => {
+      card.clicked = false;
+    })
+    this.setState({ score: 0 })
+    return true
+  }
+
+
+
 
   render() {
     return (
       <div>
-        <Nav score={this.state.score} highScore={this.state.highScore}/>
+        <Nav highScore={this.state.highScore} score={this.state.score} />
         <Hero>Memory Clicker</Hero>
         <Container>
           <div className="row">
-            {this.handleCreateCards()}
+            {this.state.characters.map(card => (
+              <Card
+                image={card.image}
+                name={card.name}
+                key={card.id}
+                id={card.id}
+                handleClickedCards={this.handleClickedCards}
+              />
+            ))}
           </div>
         </Container>
         <Footer />

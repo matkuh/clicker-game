@@ -8,8 +8,8 @@ function Nav(props) {
       <a className="navbar-brand" href="/">
       </a>
       <ul>
-        <li>High Score: {props.highscore}</li>
-        <li>Score: {props.score}</li>
+        <li id="highscore">High Score: {props.highScore}</li>
+        <li id="score">Score: {props.score}</li>
       </ul>
     </nav>
   );
